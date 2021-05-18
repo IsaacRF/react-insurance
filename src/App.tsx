@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from './components/Header';
 
 function App() {
   return (
-    <h1>Insurance</h1>
+    <Header title='Insurance React App' />
   );
 }
 
