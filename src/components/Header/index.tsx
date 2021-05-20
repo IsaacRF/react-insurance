@@ -1,3 +1,5 @@
+import HeaderContainer from './styles'
+
 export interface HeaderProps {
     title: string;
 }
@@ -8,9 +10,9 @@ export interface HeaderProps {
  * @returns
  */
 const Header: React.FC<HeaderProps> = ({title}) => (
-    <header>
+    <HeaderContainer>
         <h1>{title}</h1>
-    </header>
+    </HeaderContainer>
 );
 
 export default Header;
