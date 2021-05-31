@@ -43,3 +43,12 @@ export const ButtonContainer = styled.button`
         background-color: #26C6DA;
     }
 `;
+
+export const ErrorContainer = styled.div`
+    background-color: red;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
+`;

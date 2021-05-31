@@ -6,6 +6,7 @@ import {
   SelectContainer,
   RadioContainer,
   ButtonContainer,
+  ErrorContainer,
 } from "./styles";
 import { Data } from "./types";
 
@@ -21,6 +22,7 @@ const Form: React.FC<FormProps> = () => {
     year: "",
     plan: "basic",
   });
+  const [error, setError] = useState(false);
 
   /**
    * Set state whenever any form info changes
@@ -33,9 +35,26 @@ const Form: React.FC<FormProps> = () => {
     });
   }
 
+  /**
+   * Calculate insurance with data specified
+   * @param e
+   */
+  function calculateInsurance(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (data.brand.trim() === '' || data.year.trim() === '' || data.plan.trim() === '') {
+      setError(true);
+      return;
+    }
+
+    setError(false);
+  }
+
   return (
     <FormContainer>
-      <form>
+      <form onSubmit={calculateInsurance}>
+        { error && <ErrorContainer>All fields are mandatory</ErrorContainer>}
+
         <FieldContainer>
           <FieldLabelContainer>Brand</FieldLabelContainer>
           <SelectContainer name="brand" value={data.brand} onChange={onInfoChange}>
@@ -83,7 +102,7 @@ const Form: React.FC<FormProps> = () => {
           <span>Full</span>
         </FieldContainer>
 
-        <ButtonContainer type="button">Calculate</ButtonContainer>
+        <ButtonContainer type="submit">Calculate</ButtonContainer>
       </form>
     </FormContainer>
   );
