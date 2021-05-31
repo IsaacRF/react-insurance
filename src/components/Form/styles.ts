@@ -26,3 +26,20 @@ export const SelectContainer = styled.select`
 export const RadioContainer = styled.input`
     margin: 0 1rem;
 `;
+
+export const ButtonContainer = styled.button`
+    background-color: #00838F;
+    font-size: 16px;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    transition: background-color .3s ease;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #26C6DA;
+    }
+`;

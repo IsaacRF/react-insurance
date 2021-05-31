@@ -1,4 +1,4 @@
-import { FormContainer, FieldContainer, FieldLabelContainer, SelectContainer, RadioContainer } from "./styles";
+import { FormContainer, FieldContainer, FieldLabelContainer, SelectContainer, RadioContainer, ButtonContainer } from "./styles";
 
 export interface FormProps {}
 
@@ -38,7 +38,7 @@ const Form: React.FC<FormProps> = () => (
         <RadioContainer type="radio" name="plan" value="full" /><span>Full</span>
       </FieldContainer>
 
-      <button type="button">Calculate</button>
+      <ButtonContainer type="button">Calculate</ButtonContainer>
     </form>
   </FormContainer>
 );
