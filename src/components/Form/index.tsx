@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { getDifferenceYears } from "../../helpers";
 import {
   FormContainer,
   FieldContainer,
@@ -47,6 +48,15 @@ const Form: React.FC<FormProps> = () => {
       return;
     }
 
+    let result = 2000;
+
+    // Get years difference. Every year is a 3% less in the price
+    const diffYears = getDifferenceYears(data.year);
+    result -= (diffYears * 3 * result / 100);
+
+
+
+    console.log(result);
     setError(false);
   }
 
