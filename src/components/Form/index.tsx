@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { getDifferenceYears } from "../../helpers";
+import { getDifferenceYears, getIncrementByBrand } from "../../helpers";
 import {
   FormContainer,
   FieldContainer,
@@ -54,7 +54,8 @@ const Form: React.FC<FormProps> = () => {
     const diffYears = getDifferenceYears(data.year);
     result -= (diffYears * 3 * result / 100);
 
-
+    // Increment price depending on brand
+    result *= getIncrementByBrand(data.brand);
 
     console.log(result);
     setError(false);
