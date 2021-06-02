@@ -59,6 +59,9 @@ const Form: React.FC<FormProps> = ({ setSummary, setIsLoading }) => {
       return;
     }
 
+    // Clean summary
+    setSummary(undefined);
+
     let result = 2000;
 
     // Get years difference. Every year is a 3% less in the price
