@@ -19,3 +19,7 @@ export function getIncrementByBrand(brand: string) {
 
     return increment;
 }
+
+export function getIncrementByPlan(plan: string) {
+    return (plan === 'basic') ?  1.20 : 1.50;
+}

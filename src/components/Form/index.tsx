@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { getDifferenceYears, getIncrementByBrand } from "../../helpers";
+import { getDifferenceYears, getIncrementByBrand, getIncrementByPlan } from "../../helpers";
 import {
   FormContainer,
   FieldContainer,
@@ -56,6 +56,9 @@ const Form: React.FC<FormProps> = () => {
 
     // Increment price depending on brand
     result *= getIncrementByBrand(data.brand);
+
+    // Increment price depending on plan
+    result *= getIncrementByPlan(data.plan);
 
     console.log(result);
     setError(false);
