@@ -6,6 +6,12 @@ export const SummaryContainer = styled.div`
     padding: 1rem;
     margin-top: 1rem;
     text-align: center;
+    transition: opacity .5s ease;
+    opacity: 0;
+
+    &.active {
+        opacity: 1;
+    }
 `;
 
 export const ResultContainer = styled.div`

@@ -7,10 +7,14 @@ export interface SummaryProps {
 }
 
 const Summary: React.FC<SummaryProps> = ({summary}) => {
-    if (summary === undefined) return null;
+    if (summary === undefined) {
+        return (
+            <SummaryContainer></SummaryContainer>
+        );
+    }
 
     return (
-        <SummaryContainer>
+        <SummaryContainer className="active">
             <h2>Policy summary</h2>
             <ul>
                 <li>Brand: {Capitalize(summary.data.brand)}</li>
