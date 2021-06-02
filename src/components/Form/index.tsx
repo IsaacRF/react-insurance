@@ -1,5 +1,9 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { getDifferenceYears, getIncrementByBrand, getIncrementByPlan } from "../../helpers";
+import {
+  getDifferenceYears,
+  getIncrementByBrand,
+  getIncrementByPlan,
+} from "../../helpers";
 import {
   FormContainer,
   FieldContainer,
@@ -12,14 +16,15 @@ import {
 import { Data } from "./types";
 
 export interface FormProps {
-    setSummary: Function
+  setSummary: Function;
+  setIsLoading: Function;
 }
 
 /**
  * Form component to introduce insurance data
  * @returns
  */
-const Form: React.FC<FormProps> = ({setSummary}) => {
+const Form: React.FC<FormProps> = ({ setSummary, setIsLoading }) => {
   const [data, setData] = useState<Data>({
     brand: "",
     year: "",
@@ -45,7 +50,11 @@ const Form: React.FC<FormProps> = ({setSummary}) => {
   function calculateInsurance(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (data.brand.trim() === '' || data.year.trim() === '' || data.plan.trim() === '') {
+    if (
+      data.brand.trim() === "" ||
+      data.year.trim() === "" ||
+      data.plan.trim() === ""
+    ) {
       setError(true);
       return;
     }
@@ -54,7 +63,7 @@ const Form: React.FC<FormProps> = ({setSummary}) => {
 
     // Get years difference. Every year is a 3% less in the price
     const diffYears = getDifferenceYears(data.year);
-    result -= (diffYears * 3 * result / 100);
+    result -= (diffYears * 3 * result) / 100;
 
     // Increment price depending on brand
     result *= getIncrementByBrand(data.brand);
@@ -64,21 +73,31 @@ const Form: React.FC<FormProps> = ({setSummary}) => {
 
     setError(false);
 
-    // Set final summary
-    setSummary({
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+
+      // Set final summary
+      setSummary({
         price: result,
-        data
-    })
+        data,
+      });
+    }, 2000);
   }
 
   return (
     <FormContainer>
       <form onSubmit={calculateInsurance}>
-        { error && <ErrorContainer>All fields are mandatory</ErrorContainer>}
+        {error && <ErrorContainer>All fields are mandatory</ErrorContainer>}
 
         <FieldContainer>
           <FieldLabelContainer>Brand</FieldLabelContainer>
-          <SelectContainer name="brand" value={data.brand} onChange={onInfoChange}>
+          <SelectContainer
+            name="brand"
+            value={data.brand}
+            onChange={onInfoChange}
+          >
             <option value="">-- Choose a brand --</option>
             <option value="american">American</option>
             <option value="european">European</option>
@@ -88,7 +107,11 @@ const Form: React.FC<FormProps> = ({setSummary}) => {
 
         <FieldContainer>
           <FieldLabelContainer>Year</FieldLabelContainer>
-          <SelectContainer name="year" value={data.year} onChange={onInfoChange}>
+          <SelectContainer
+            name="year"
+            value={data.year}
+            onChange={onInfoChange}
+          >
             <option value="">-- Seleccione --</option>
             <option value="2021">2021</option>
             <option value="2020">2020</option>
