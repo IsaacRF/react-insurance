@@ -1,5 +1,5 @@
 import { Capitalize } from "../../helpers";
-import { SummaryContainer } from "./styles";
+import { ResultContainer, SummaryContainer } from "./styles";
 import { SummaryData } from "./types";
 
 export interface SummaryProps {
@@ -7,7 +7,7 @@ export interface SummaryProps {
 }
 
 const Summary: React.FC<SummaryProps> = ({summary}) => {
-    if (summary == undefined) return null;
+    if (summary === undefined) return null;
 
     return (
         <SummaryContainer>
@@ -17,6 +17,10 @@ const Summary: React.FC<SummaryProps> = ({summary}) => {
                 <li>Plan: {Capitalize(summary.data.plan)}</li>
                 <li>Vehicle year: {summary.data.year}</li>
             </ul>
+
+            <ResultContainer>
+                Policy price: {summary.price}€
+            </ResultContainer>
         </SummaryContainer>
     );
 }
