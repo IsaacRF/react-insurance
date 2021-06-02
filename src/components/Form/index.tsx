@@ -11,13 +11,15 @@ import {
 } from "./styles";
 import { Data } from "./types";
 
-export interface FormProps {}
+export interface FormProps {
+    setSummary: Function
+}
 
 /**
  * Form component to introduce insurance data
  * @returns
  */
-const Form: React.FC<FormProps> = () => {
+const Form: React.FC<FormProps> = ({setSummary}) => {
   const [data, setData] = useState<Data>({
     brand: "",
     year: "",
@@ -60,8 +62,13 @@ const Form: React.FC<FormProps> = () => {
     // Increment price depending on plan
     result *= getIncrementByPlan(data.plan);
 
-    console.log(result);
     setError(false);
+
+    // Set final summary
+    setSummary({
+        price: result,
+        data
+    })
   }
 
   return (

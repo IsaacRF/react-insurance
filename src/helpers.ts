@@ -23,3 +23,7 @@ export function getIncrementByBrand(brand: string) {
 export function getIncrementByPlan(plan: string) {
     return (plan === 'basic') ?  1.20 : 1.50;
 }
+
+export function Capitalize(text: string) {
+    return `${text.charAt(0).toUpperCase()}${text.slice(1)}`;
+}
