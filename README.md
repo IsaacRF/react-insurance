@@ -4,7 +4,9 @@ This project is intended to serve as a base for learning some React principles a
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Live Demo: WIP
+Live Demo: http://isaacrf.com/apps/react-insurance/
+
+![react-insurance-demo](https://user-images.githubusercontent.com/2803925/120481879-dfb87400-c3b0-11eb-8104-ea94557a61e6.gif)
 
 ## Available Scripts
 
