@@ -1,5 +1,6 @@
 {
   "name": "react-insurance",
+  "homepage": "http://isaacrf.com/apps/react-insurance/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
